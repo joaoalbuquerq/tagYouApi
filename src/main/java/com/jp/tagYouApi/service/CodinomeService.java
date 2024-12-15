@@ -41,8 +41,8 @@ public class CodinomeService {
 		return codinomeRepository.buscarCodinomes();
 	}
 	
-	private String sortearCodinome(List<String> codinomesDisponiveis) {
-		return null;
+	private String sortearCodinome(List<String> codinomesDisponiveis) {		
+		return codinomesDisponiveis.get((int) (Math.random() * codinomesDisponiveis.size()));
 	}
 
 }
