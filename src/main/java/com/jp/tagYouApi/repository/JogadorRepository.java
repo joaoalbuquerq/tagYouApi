@@ -1,8 +1,11 @@
 package com.jp.tagYouApi.repository;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 
+import com.jp.tagYouApi.model.GrupoCodinome;
 import com.jp.tagYouApi.model.Jogador;
 
 @Repository
@@ -28,5 +31,13 @@ public class JogadorRepository {
 		.update();
 		
 		return jogador;
+	}
+
+	public List<String> listarCodinomesIndisponiveisPorGrupo(GrupoCodinome grupoCodinome) {
+		
+		return jdbcClient.sql("SELECT distinct(codinomes) FROM JOGADORES WHERE grupo_codinome = :codinome")
+				.param("codinome", grupoCodinome.name())
+				.query(String.class)
+				.list();
 	}
 }
