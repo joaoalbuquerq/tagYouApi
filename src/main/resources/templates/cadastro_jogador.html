@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Jogador</title>
+</head>
+<body>
+	<div class="container">
+	    <h1 class="mt-5">Cadastro de Jogador</h1>
+	    <form th:action="@{/cadastro-jogador}" th:method="post" th:object="${jogador}">
+	        <div>
+	            <label for="nome">Nome: </label>
+	            <input type="text" th:field="*{nome}" id="nome" required>
+	        </div>
+	
+	        <div>
+	            <label for="email">E-mail: </label>
+	            <input type="email" th:field="*{email}" id="email" required>
+	        </div>
+	
+	        <div>
+	            <label for="">Telefone: </label>
+	            <input type="tel" th:field="*{telefone}" id="telefone">
+	        </div>
+	
+	        <div>
+	           <label>Escolha um Grupo de Codinome:</label>
+	           
+	           <div th:each="grupo: ${gruposCodinomes}">
+	           		<input type="radio" th:field="*{grupoCodinome}" th:value="${grupo.name()}" th:id="${grupo.name()}" required>
+	           		<label th:for="${grupo.name()}" th.text="${grupo.getNome()}"></label>
+	           </div> 
+	        </div>
+	        
+	        <div>
+	        	<button type="submit" class="btn btn-primary">Cadastrar</button>
+	        </div>
+	    </form>
+    </div>
+</body>
+</html>

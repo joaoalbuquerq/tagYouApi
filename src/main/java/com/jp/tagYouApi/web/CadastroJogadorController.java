@@ -1,10 +1,13 @@
 package com.jp.tagYouApi.web;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.jp.tagYouApi.model.GrupoCodinome;
 import com.jp.tagYouApi.model.Jogador;
 import com.jp.tagYouApi.service.JogadorService;
 
@@ -15,6 +18,13 @@ public class CadastroJogadorController {
 	
 	public CadastroJogadorController(JogadorService serv) {
 		this.jogadorService = serv;
+	}
+	
+	@GetMapping
+	public String paginaCadastroJogador(Model model) {
+		model.addAttribute("gruposCodinomes", GrupoCodinome.values());
+		
+		return "cadastro_jogador";
 	}
 	
 	@PostMapping

@@ -2,12 +2,14 @@ package com.jp.tagYouApi.repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestClient;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.jp.tagYouApi.model.GrupoCodinome;
 import com.jp.tagYouApi.web.LigaDaJusticaDTO;
 
+@Repository
 public class LigaDaJusticaRepository implements CodinomeRepository{
 
 	@Override
